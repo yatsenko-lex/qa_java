@@ -26,10 +26,9 @@ public class CatTests {
 
     @Test
     public void foodIsCorrectTest() throws Exception {
-        Feline feline = new Feline();
         Cat cat = new Cat(feline);
+        Mockito.when(feline.eatMeat()).thenReturn(List.of("Животные", "Птицы", "Рыба"));
         List<String> expectedEatMeat = Arrays.asList("Животные", "Птицы", "Рыба");
-        List<String> actualEatMeat = cat.getFood();
-        assertEquals(expectedEatMeat, actualEatMeat);
+        assertEquals(cat.getFood(), expectedEatMeat);
     }
 }

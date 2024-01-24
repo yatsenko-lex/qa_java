@@ -11,42 +11,20 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LionTests {
 
     @Mock
-    Lion lion;
-    @Mock
     Feline feline;
 
     @Test
-    public void correctSexTest() throws Exception {
-        Lion lion = new Lion("Самец", feline);
-        Assert.assertTrue(lion.doesHaveMane());
-    }
-
-    @Test
-    public void hasManeTest() throws Exception {
-        Lion lion = new Lion("Самец", feline);
-        Assert.assertTrue(lion.doesHaveMane());
-    }
-
-    @Test
-    public void doesNotHasManeTest() throws Exception {
-        Lion lion = new Lion("Самка", feline);
-        Assert.assertFalse(lion.doesHaveMane());
-    }
-
-    @Test
-    public void invalidSexTest() {
-        try {
+    public void testHasManeOther () throws Exception   {
+        Exception exception = Assert.assertThrows(Exception.class, () -> {
             Lion lion = new Lion("QWE", feline);
-            fail("Ожидалось исключение");
-        } catch (Exception e) {
-            assertEquals("Используйте допустимые значения пола животного - самей или самка", e.getMessage());
-        }
+        });
+        String expectedResult = "Используйте допустимые значения пола животного - самей или самка";
+        assertEquals("Ошибка: ФР не соответствует ОР", expectedResult, exception.getMessage());
     }
 
     @Test
