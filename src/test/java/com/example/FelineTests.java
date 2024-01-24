@@ -13,7 +13,7 @@ public class FelineTests {
     public void eatMeatFelineTest() throws Exception {
         Feline feline = new Feline();
         List<String> expectedEatMeat = Arrays.asList("Животные", "Птицы", "Рыба");
-        assertEquals(feline.eatMeat(), expectedEatMeat);
+        assertEquals(expectedEatMeat, feline.eatMeat());
     }
 
     @Test
